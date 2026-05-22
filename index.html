@@ -32,9 +32,10 @@ body:hover #cur,body:hover #cur2{opacity:1;}
 .logo{font-family:'Cinzel',serif;font-size:13px;letter-spacing:5px;color:var(--gold);text-decoration:none;display:flex;flex-direction:column;gap:3px;}
 .logo span{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:6px;color:var(--gold2);font-weight:300;text-transform:uppercase;}
 .nav-links{display:flex;gap:36px;list-style:none;}
-.nav-links a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,235,224,.7);text-decoration:none;transition:color .3s;position:relative;}
+.nav-links a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,235,224,.7);text-decoration:none;transition:color .3s,transform .3s;position:relative;}
 .nav-links a::after{content:'';display:none;}
-.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover{color:var(--gold);transform:translateY(-1px);}
+.nav-links a.active{color:var(--neon);}
 .nav-links a:hover::after{width:100%;}
 .nav-btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:var(--neon);border:1px solid var(--neon);padding:8px 16px;text-decoration:none;transition:all .3s;}
 .nav-btn:hover{background:var(--neon);color:var(--black);box-shadow:0 0 16px rgba(74,159,212,.4);}
@@ -344,7 +345,10 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
 .port-item.slide-target.in{transform:translateX(0);opacity:1;transition:transform .7s cubic-bezier(.22,.68,0,1.2),opacity .45s;}
 
 /* mobile-only nav indicator (moving blue bar) */
-.nav-indicator{display:none;}
+.nav-indicator{position:absolute;bottom:-4px;height:4px;background:var(--neon);border-radius:999px;transition:left .32s cubic-bezier(.22,.68,0,1.2),width .32s;display:none;}
+@media(max-width:768px){
+  .nav-indicator{display:block;}
+}
 
 /* generic mobile slide-in for sections */
 .mobile-slide{transform:translateX(18px);opacity:0;transition:transform .6s cubic-bezier(.22,.68,0,1.2),opacity .4s;}
@@ -400,7 +404,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
   <div class="hero-video-bg">
     <!-- Replace this sample MP4 URL with your final wedding video link -->
     <video autoplay muted loop playsinline preload="auto" poster="">
-      <source src="Video/a-reel.mp4" type="video/mp4">
+      <source src="Video\A Reel.mp4" type="video/mp4">
     </video>
   </div>
   <div class="cine-bar-t" id="cineT"></div>
@@ -408,7 +412,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
   <div class="hero-border"></div>
   <div class="hero-content">
     <div style="height:clamp(210px,34vw,350px);width:auto;object-fit:contain;margin-top:80px;">
-     <img src="Logo/good-view-logo.png" alt="Wedding Vibes Studio" style="height:clamp(210px,34vw,350px);width:auto;object-fit:contain;filter:brightness(1.2) drop-shadow(0 0 50px rgba(74,159,212,0.7)) drop-shadow(0 0 25px rgba(74,159,212,0.35));transform:translateY(100px);" />
+     <img src="Logo\good-view-logo.png" alt="Wedding Vibes Studio" style="height:clamp(210px,34vw,350px);width:auto;object-fit:contain;position:absolute;top:5%;left:50%;transform:translate(-50%,-50%);filter:brightness(1.2) drop-shadow(0 0 50px rgba(74,159,212,0.7)) drop-shadow(0 0 25px rgba(74,159,212,0.35));z-index:5;"
   
     </div>
     <div class="hero-tag">Wedding Photography &amp; Cinematic Films</div>
@@ -426,6 +430,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
     <div class="scroll-wire"></div>
   </div>
 </section>
+
 
 <!-- ══════════════════ MARQUEE ══════════════════ -->
 <div class="marquee-wrap">
@@ -511,8 +516,11 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
       </div>
       <div class="srv-num">01</div>
       <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><rect x="4" y="9" width="36" height="26" rx="3" stroke="currentColor" stroke-width="1.4"/><circle cx="22" cy="22" r="7" stroke="currentColor" stroke-width="1.4"/><circle cx="22" cy="22" r="3.5" fill="currentColor" opacity=".3"/><rect x="28" y="13" width="7" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+      <a href="/profile" class="card">
       <h3 class="srv-name">Wedding Photography</h3>
+    
       <p class="srv-desc">Beautifully capturing every emotion, ritual, and unforgettable moment of your special day with creative and elegant photography.</p>
+      </a>
     </div>
 
     <div class="srv reveal">
@@ -1145,6 +1153,79 @@ if(logoLink){
   });
 }
 
+// Mobile nav indicator + mobile slide behavior for nav links
+(function(){
+    const navLinks = document.querySelector('.nav-links');
+    if(!navLinks) return;
+    const links = [...navLinks.querySelectorAll('a')];
+    const indicator = document.createElement('div');
+    indicator.className = 'nav-indicator';
+    navLinks.appendChild(indicator);
+
+    function moveIndicator(el){
+      if(!el) return;
+      const styles = getComputedStyle(el);
+      const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+      const paddingRight = parseFloat(styles.paddingRight) || 0;
+      const left = el.offsetLeft + paddingLeft;
+      const width = Math.max(12, el.offsetWidth - paddingLeft - paddingRight);
+      indicator.style.left = left + 'px';
+      indicator.style.width = width + 'px';
+    }
+
+    function setActiveLink(link){
+      links.forEach(el=>el.classList.remove('active'));
+      if(link) link.classList.add('active');
+      moveIndicator(link || links[0]);
+    }
+
+    function centerLink(link){
+      if(!link) return;
+      try{
+        const linkLeft = link.offsetLeft;
+        const linkCenter = linkLeft + (link.offsetWidth / 2);
+        const scrollTo = Math.max(0, linkCenter - (navLinks.clientWidth / 2));
+        navLinks.scrollTo({left: scrollTo, behavior:'smooth'});
+      }catch(e){/* ignore */}
+    }
+
+    function navigateTo(link){
+      const target = document.querySelector(link.getAttribute('href'));
+      if(target){
+        target.classList.add('mobile-slide');
+        void target.offsetWidth;
+        target.classList.add('in');
+        target.scrollIntoView({behavior:'smooth',block:'start'});
+        setTimeout(()=>{ target.classList.remove('mobile-slide','in'); },900);
+      }
+    }
+
+    if(links.length){
+      setActiveLink(links[0]);
+      if(window.innerWidth <= 768){
+        centerLink(links[0]);
+      }
+    }
+
+    links.forEach(a=>{
+      a.addEventListener('click', function(ev){
+        if(window.innerWidth <= 768){
+          ev.preventDefault();
+          setActiveLink(a);
+          centerLink(a);
+          navigateTo(a);
+        }
+      });
+    });
+
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth <= 768){
+        const active = document.querySelector('.nav-links a.active') || links[0];
+        setActiveLink(active);
+        centerLink(active);
+      }
+    });
+  })();
 
 </script>
 </body>
