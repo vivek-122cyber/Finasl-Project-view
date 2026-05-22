@@ -28,12 +28,12 @@ body:hover #cur,body:hover #cur2{opacity:1;}
 
 /* ── NAV ── */
 #nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:28px 56px;display:flex;align-items:center;justify-content:space-between;transition:all .5s ease;}
-#nav.s{background:rgba(4,8,12,.95);backdrop-filter:blur(20px);padding:18px 56px;border-bottom:1px solid rgba(74,159,212,.15);}
+#nav.s{background:rgba(4,8,12,.95);backdrop-filter:blur(20px);padding:18px 56px;}
 .logo{font-family:'Cinzel',serif;font-size:13px;letter-spacing:5px;color:var(--gold);text-decoration:none;display:flex;flex-direction:column;gap:3px;}
 .logo span{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:6px;color:var(--gold2);font-weight:300;text-transform:uppercase;}
 .nav-links{display:flex;gap:36px;list-style:none;}
 .nav-links a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,235,224,.7);text-decoration:none;transition:color .3s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .4s;}
+.nav-links a::after{content:'';display:none;}
 .nav-links a:hover{color:var(--gold);}
 .nav-links a:hover::after{width:100%;}
 .nav-btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:var(--neon);border:1px solid var(--neon);padding:8px 16px;text-decoration:none;transition:all .3s;}
@@ -344,10 +344,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
 .port-item.slide-target.in{transform:translateX(0);opacity:1;transition:transform .7s cubic-bezier(.22,.68,0,1.2),opacity .45s;}
 
 /* mobile-only nav indicator (moving blue bar) */
-.nav-indicator{position:absolute;bottom:-4px;height:4px;background:var(--neon);border-radius:2px;transition:left .32s cubic-bezier(.22,.68,0,1.2),width .32s;display:none;}
-@media(max-width:768px){
-  .nav-indicator{display:block;}
-}
+.nav-indicator{display:none;}
 
 /* generic mobile slide-in for sections */
 .mobile-slide{transform:translateX(18px);opacity:0;transition:transform .6s cubic-bezier(.22,.68,0,1.2),opacity .4s;}
@@ -355,6 +352,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
 </style>
 </head>
 <body>
+<div id="top"></div>
 
 <div id="cur"></div>
 <div id="cur2"></div>
@@ -367,11 +365,11 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#hero" class="logo-img-link" style="display:flex;align-items:center;text-decoration:none;">
-    <img src="Logo/good-view-logo.png" alt="Wedding Vibes Studio Logo" style="height:78px;width:auto;object-fit:contain;filter:brightness(1.5) drop-shadow(0 0 10px rgba(74,159,212,0.8)) drop-shadow(0 0 20px rgba(74,159,212,0.4));" />
+  <a href="#top" class="logo-img-link" style="display:flex;align-items:center;text-decoration:none;">
+    <img src="Logo/good-view-logo.png" alt="Wedding Vibes Studio Logo" style="height:78px;width:auto;object-fit:contain;filter:brightness(1.5) drop-shadow(0 0 10px rgba(74,159,212,0.8)) drop-shadow(0 0 20px rgba(74,159,212,.4));" />
   </a>
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
+    <li><a href="#top">Home</a></li>
     <li><a href="#about-wrap">About</a></li>
     <li><a href="#services-wrap">Services</a></li>
     <li><a href="#portfolio-wrap">Portfolio</a></li>
@@ -388,7 +386,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
 <!-- MOB MENU -->
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" id="mobClose">✕</button>
-  <a href="#hero" onclick="closeMenu()">Home</a>
+  <a href="#top" onclick="closeMenu()">Home</a>
   <a href="#about-wrap" onclick="closeMenu()">About</a>
   <a href="#services-wrap" onclick="closeMenu()">Services</a>
   <a href="#portfolio-wrap" onclick="closeMenu()">Portfolio</a>
@@ -1147,55 +1145,6 @@ if(logoLink){
   });
 }
 
-// Mobile nav indicator + mobile slide behavior for nav links
-(function(){
-  const navLinks = document.querySelector('.nav-links');
-  if(!navLinks) return;
-  const links = [...navLinks.querySelectorAll('a')];
-  const indicator = document.createElement('div');
-  indicator.className = 'nav-indicator';
-  navLinks.appendChild(indicator);
-
-  function moveIndicator(el){
-    const styles = getComputedStyle(el);
-    const paddingLeft = parseFloat(styles.paddingLeft) || 0;
-    const paddingRight = parseFloat(styles.paddingRight) || 0;
-    const left = el.offsetLeft + paddingLeft;
-    const width = Math.max(12, el.offsetWidth - paddingLeft - paddingRight);
-    indicator.style.left = left + 'px';
-    indicator.style.width = width + 'px';
-  }
-
-  // init indicator on first link
-  if(links.length) moveIndicator(links[0]);
-
-  links.forEach(a=>{
-    a.addEventListener('click', function(ev){
-      if(window.innerWidth <= 768){
-        ev.preventDefault();
-        // center the clicked link inside the nav container
-        try{
-          const linkLeft = a.offsetLeft;
-          const linkCenter = linkLeft + (a.offsetWidth / 2);
-          const scrollTo = Math.max(0, linkCenter - (navLinks.clientWidth / 2));
-          navLinks.scrollTo({left: scrollTo, behavior:'smooth'});
-        }catch(e){/* ignore */}
-
-        // move indicator after container has started scrolling
-        setTimeout(()=> moveIndicator(a), 220);
-
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target){
-          target.classList.add('mobile-slide');
-          void target.offsetWidth;
-          target.classList.add('in');
-          target.scrollIntoView({behavior:'smooth',block:'start'});
-          setTimeout(()=>{ target.classList.remove('mobile-slide','in'); },900);
-        }
-      }
-    });
-  });
-})();
 
 </script>
 </body>
