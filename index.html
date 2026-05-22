@@ -1168,7 +1168,17 @@ if(logoLink){
     a.addEventListener('click', function(ev){
       if(window.innerWidth <= 768){
         ev.preventDefault();
-        moveIndicator(a);
+        // center the clicked link inside the nav container
+        try{
+          const linkLeft = a.offsetLeft;
+          const linkCenter = linkLeft + (a.offsetWidth / 2);
+          const scrollTo = Math.max(0, linkCenter - (navLinks.clientWidth / 2));
+          navLinks.scrollTo({left: scrollTo, behavior:'smooth'});
+        }catch(e){/* ignore */}
+
+        // move indicator after container has started scrolling
+        setTimeout(()=> moveIndicator(a), 220);
+
         const target = document.querySelector(a.getAttribute('href'));
         if(target){
           target.classList.add('mobile-slide');
