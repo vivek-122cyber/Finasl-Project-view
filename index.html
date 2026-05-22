@@ -300,7 +300,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
   #nav{padding:16px 12px;justify-content:space-between;align-items:center;gap:12px;}
   #nav.s{padding:12px 12px;}
   .logo-img-link{order:1;margin:0;padding-right:8px;display:flex;align-items:center;}
-  .logo-img-link img{height:44px;max-height:44px;width:auto;}
+  .logo-img-link img{height:64px;max-height:64px;width:auto;}
   .nav-links{order:2;display:flex;gap:12px;flex:1;justify-content:center;align-items:center;overflow:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding:6px 0;margin:0 8px;}
   .nav-links a{font-size:10px;padding:6px 8px;}
   .nav-btn{order:3;display:inline-block;padding:6px 10px;margin-left:8px;border-radius:2px;font-size:10px;}
@@ -337,6 +337,10 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
   .nav-links li{margin-top:8px;}
   .btn-g,.btn-o{width:100%;text-align:center;}
 }
+
+/* Slide animation target for portfolio items (used when logo clicked on mobile) */
+.port-item.slide-target{transform:translateX(120%);opacity:0;}
+.port-item.slide-target.in{transform:translateX(0);opacity:1;transition:transform .7s cubic-bezier(.22,.68,0,1.2),opacity .45s;}
 </style>
 </head>
 <body>
@@ -1109,6 +1113,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
+// Logo click -> slide to second portfolio item on mobile
+const logoLink = document.querySelector('.logo-img-link');
+if(logoLink){
+  logoLink.addEventListener('click', function(e){
+    if(window.innerWidth <= 768){
+      e.preventDefault();
+      const items = document.querySelectorAll('.port-item');
+      if(items && items.length > 1){
+        const target = items[1];
+        target.classList.add('slide-target');
+        // force reflow then add 'in' to trigger transition
+        void target.offsetWidth;
+        target.classList.add('in');
+        target.scrollIntoView({behavior:'smooth',block:'center'});
+        // cleanup after animation
+        setTimeout(()=>{ target.classList.remove('slide-target','in'); },900);
+      }
+    }
+  });
+}
+
 </script>
 </body>
 </html>
