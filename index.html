@@ -303,6 +303,7 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
   .logo-img-link img{height:64px;max-height:64px;width:auto;}
   .nav-links{order:2;display:flex;gap:12px;flex:1;justify-content:center;align-items:center;overflow:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding:6px 0;margin:0 8px;}
   .nav-links a{font-size:10px;padding:6px 8px;}
+  .nav-links{position:relative;}
   .nav-btn{order:3;display:inline-block;padding:6px 10px;margin-left:8px;border-radius:2px;font-size:10px;}
   .hamburger{display:none !important;}
   .mob-menu{display:none !important;}
@@ -341,6 +342,16 @@ footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:
 /* Slide animation target for portfolio items (used when logo clicked on mobile) */
 .port-item.slide-target{transform:translateX(120%);opacity:0;}
 .port-item.slide-target.in{transform:translateX(0);opacity:1;transition:transform .7s cubic-bezier(.22,.68,0,1.2),opacity .45s;}
+
+/* mobile-only nav indicator (moving blue bar) */
+.nav-indicator{position:absolute;bottom:-6px;height:6px;background:var(--neon);border-radius:3px;transition:left .32s cubic-bezier(.22,.68,0,1.2),width .32s;display:none;}
+@media(max-width:768px){
+  .nav-indicator{display:block;}
+}
+
+/* generic mobile slide-in for sections */
+.mobile-slide{transform:translateX(18px);opacity:0;transition:transform .6s cubic-bezier(.22,.68,0,1.2),opacity .4s;}
+.mobile-slide.in{transform:none;opacity:1;}
 </style>
 </head>
 <body>
@@ -1133,6 +1144,43 @@ if(logoLink){
     }
   });
 }
+
+// Mobile nav indicator + mobile slide behavior for nav links
+(function(){
+  const navLinks = document.querySelector('.nav-links');
+  if(!navLinks) return;
+  const links = [...navLinks.querySelectorAll('a')];
+  const indicator = document.createElement('div');
+  indicator.className = 'nav-indicator';
+  navLinks.appendChild(indicator);
+
+  function moveIndicator(el){
+    const left = el.offsetLeft;
+    const width = el.offsetWidth;
+    indicator.style.left = left + 'px';
+    indicator.style.width = width + 'px';
+  }
+
+  // init indicator on first link
+  if(links.length) moveIndicator(links[0]);
+
+  links.forEach(a=>{
+    a.addEventListener('click', function(ev){
+      if(window.innerWidth <= 768){
+        ev.preventDefault();
+        moveIndicator(a);
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){
+          target.classList.add('mobile-slide');
+          void target.offsetWidth;
+          target.classList.add('in');
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+          setTimeout(()=>{ target.classList.remove('mobile-slide','in'); },900);
+        }
+      }
+    });
+  });
+})();
 
 </script>
 </body>
