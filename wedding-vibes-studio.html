@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Wedding Vibes Studio | Cinematic Wedding Photography & Films — Patna</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#4A9FD4;--gold2:#A8D8F0;--gold3:#1A5F8A;
+  --black:#04080C;--dark:#080E14;--card:#0D1520;
+  --white:#E8F4FC;--muted:#6A8FA8;--faint:#1A2A38;
+  --neon:#4A9FD4;--neon-glow:rgba(74,159,212,0.35);
+  --transition:0.55s cubic-bezier(.22,.68,0,1.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+::-webkit-scrollbar{width:2px;}
+::-webkit-scrollbar-thumb{background:var(--neon);box-shadow:0 0 6px var(--neon-glow);}
+
+/* ── CUSTOM CURSOR ── */
+#cur,#cur2{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transition:opacity .3s;}
+#cur{width:6px;height:6px;background:var(--neon);margin:-3px 0 0 -3px;box-shadow:0 0 8px var(--neon-glow);}
+#cur2{width:40px;height:40px;border:1px solid rgba(74,159,212,.5);margin:-20px 0 0 -20px;transition:width .3s,height .3s,background .2s;}
+body:hover #cur,body:hover #cur2{opacity:1;}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:28px 56px;display:flex;align-items:center;justify-content:space-between;transition:all .5s ease;}
+#nav.s{background:rgba(4,8,12,.95);backdrop-filter:blur(20px);padding:18px 56px;border-bottom:1px solid rgba(74,159,212,.15);}
+.logo{font-family:'Cinzel',serif;font-size:13px;letter-spacing:5px;color:var(--gold);text-decoration:none;display:flex;flex-direction:column;gap:3px;}
+.logo span{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:6px;color:var(--gold2);font-weight:300;text-transform:uppercase;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,235,224,.7);text-decoration:none;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .4s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{width:100%;}
+.nav-btn{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;color:var(--neon);border:1px solid var(--neon);padding:10px 24px;text-decoration:none;transition:all .3s;}
+.nav-btn:hover{background:var(--neon);color:var(--black);box-shadow:0 0 16px rgba(74,159,212,.4);}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:26px;height:1px;background:var(--neon);transition:all .3s;}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(8,8,8,.98);z-index:499;flex-direction:column;align-items:center;justify-content:center;gap:40px;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:'Cinzel',serif;font-size:20px;letter-spacing:6px;color:var(--white);text-decoration:none;text-transform:uppercase;transition:color .3s;}
+.mob-menu a:hover{color:var(--neon);text-shadow:0 0 12px rgba(74,159,212,.6);}
+.mob-close{position:absolute;top:28px;right:28px;background:none;border:none;font-size:28px;color:var(--neon);cursor:pointer;}
+
+/* ── HERO ── */
+#hero{height:100vh;min-height:640px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.hero-video-bg{position:absolute;inset:0;z-index:0;}
+.hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:.18;}
+.hero-video-bg video,
+.srv-video video,
+.port-bg video,
+.film-vis video{
+  outline:3px dashed rgba(255,255,255,.85);
+  outline-offset:-6px;
+}
+.hero-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.5) 0%,rgba(8,8,8,.1) 40%,rgba(8,8,8,.7) 100%);}
+/* Cinematic bars */
+.cine-bar-t,.cine-bar-b{position:absolute;left:0;right:0;height:80px;background:var(--black);z-index:2;transition:height .8s ease;}
+.cine-bar-t{top:0;}.cine-bar-b{bottom:0;}
+.hero-border{position:absolute;inset:80px 56px;border:1px solid rgba(74,159,212,.18);z-index:2;pointer-events:none;}
+.hero-border::before,.hero-border::after{content:'';position:absolute;background:var(--neon);box-shadow:0 0 10px var(--neon-glow);}
+.hero-border::before{top:-1px;left:0;width:60px;height:1px;}
+.hero-border::after{bottom:-1px;right:0;width:60px;height:1px;}
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 24px;}
+.hero-tag{font-size:9px;letter-spacing:8px;text-transform:uppercase;color:var(--neon);margin-bottom:32px;opacity:0;animation:fadeUp 1s .4s forwards;display:flex;align-items:center;justify-content:center;gap:14px;}
+.hero-tag::before,.hero-tag::after{content:'';display:block;width:36px;height:1px;background:var(--neon);box-shadow:0 0 8px rgba(74,159,212,.6);}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8.5vw,108px);font-weight:300;line-height:.92;color:var(--white);opacity:0;animation:fadeUp 1s .7s forwards;}
+.hero-h1 em{font-style:italic;color:var(--gold2);text-shadow:0 0 20px rgba(168,216,240,.3);}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,1.8vw,18px);font-weight:300;letter-spacing:5px;color:rgba(240,235,224,.7);margin:28px 0 48px;opacity:0;animation:fadeUp 1s 1s forwards;}
+.hero-btns{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s 1.3s forwards;}
+.btn-g{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;background:var(--neon);color:var(--black);padding:15px 38px;text-decoration:none;transition:all .3s;display:inline-block;box-shadow:0 0 20px rgba(74,159,212,.35);}
+.btn-g:hover{background:var(--gold3);color:var(--white);box-shadow:0 0 30px rgba(74,159,212,.6);}
+.btn-o{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;border:1px solid rgba(201,160,66,.5);color:var(--white);padding:15px 38px;text-decoration:none;transition:all .3s;display:inline-block;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);}
+.hero-scroll{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp 1s 1.8s forwards;}
+.hero-scroll span{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--neon);}
+.scroll-wire{width:1px;height:48px;background:linear-gradient(var(--neon),transparent);animation:wire 2.2s infinite;box-shadow:0 0 6px rgba(74,159,212,.4);}
+@keyframes wire{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── TYPING EFFECT ── */
+.typing-cursor{display:inline-block;width:2px;height:.85em;background:var(--neon);margin-left:4px;vertical-align:middle;animation:blink 1.1s infinite;box-shadow:0 0 8px rgba(74,159,212,.6);}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── SECTION BASE ── */
+.sec{padding:120px 56px;max-width:1500px;margin:0 auto;}
+.sec-full{padding:120px 0;}
+.sec-lbl{font-size:9px;letter-spacing:7px;text-transform:uppercase;color:var(--neon);display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.sec-lbl::before{content:'';display:block;width:28px;height:1px;background:var(--neon);box-shadow:0 0 8px rgba(74,159,212,.5);}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,70px);font-weight:300;line-height:1.05;}
+.sec-h em{font-style:italic;color:var(--gold2);}
+.divider{width:56px;height:1px;background:var(--neon);margin:28px 0;box-shadow:0 0 10px rgba(74,159,212,.4);}
+.divider.c{margin:28px auto;}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-l{opacity:0;transform:translateX(-40px);transition:opacity .9s ease,transform .9s ease;}
+.reveal-l.in{opacity:1;transform:translateX(0);}
+.reveal-r{opacity:0;transform:translateX(40px);transition:opacity .9s ease,transform .9s ease;}
+.reveal-r.in{opacity:1;transform:translateX(0);}
+
+/* ── MARQUEE ── */
+.marquee-wrap{overflow:hidden;border-top:1px solid rgba(201,160,66,.1);border-bottom:1px solid rgba(201,160,66,.1);padding:20px 0;background:var(--dark);}
+.marquee-inner{display:flex;gap:0;animation:marquee 24s linear infinite;width:max-content;}
+.marquee-item{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:rgba(74,159,212,.4);white-space:nowrap;padding:0 40px;}
+.marquee-item span{color:var(--neon);margin:0 16px;text-shadow:0 0 8px rgba(74,159,212,.6);}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── ABOUT ── */
+#about-wrap{background:var(--dark);}
+#about{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.about-frame{position:relative;}
+.about-img{width:100%;padding-top:115%;background:var(--card);position:relative;overflow:hidden;}
+.about-img-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;color:rgba(74,159,212,.3);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;letter-spacing:3px;}
+.about-img-inner img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.82) contrast(1.08) saturate(.96);}
+.corner{position:absolute;width:36px;height:36px;border-color:var(--neon);border-style:solid;border-width:0;filter:drop-shadow(0 0 6px rgba(74,159,212,.5));}
+.corner.tl{top:-10px;left:-10px;border-top-width:1px;border-left-width:1px;}
+.corner.br{bottom:-10px;right:-10px;border-bottom-width:1px;border-right-width:1px;}
+.years-badge{position:absolute;bottom:-20px;right:-20px;width:96px;height:96px;background:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--black);box-shadow:0 0 20px rgba(74,159,212,.4),0 0 40px rgba(74,159,212,.2);}
+.years-badge .n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;line-height:1;}
+.years-badge .l{font-size:8px;letter-spacing:2px;text-transform:uppercase;margin-top:3px;font-weight:500;}
+.about-body{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--white);line-height:1.8;margin:20px 0;}
+.about-p{font-size:14px;color:var(--muted);line-height:1.95;margin-bottom:20px;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;padding-top:44px;border-top:1px solid rgba(74,159,212,.12);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--neon);text-shadow:0 0 16px rgba(74,159,212,.4);}
+.stat-l{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+/* ── SERVICES ── */
+#services-wrap{background:var(--black);}
+.services-header{text-align:center;margin-bottom:80px;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:rgba(74,159,212,.08);max-width:1400px;margin:0 auto;}
+.srv{background:var(--black);padding:44px 36px;position:relative;overflow:hidden;transition:background .4s;min-height:250px;}
+.srv::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--neon);transition:height .4s;box-shadow:0 0 10px var(--neon-glow);z-index:4;}
+.srv::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,12,.72),rgba(4,8,12,.88));z-index:1;}
+.srv:hover{background:rgba(201,160,66,.03);}
+.srv:hover::before{height:100%;}
+.srv-video{position:absolute;inset:0;z-index:0;opacity:.35;pointer-events:none;}
+.srv-video video{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.12);transition:transform .7s ease;}
+.srv:hover .srv-video video{transform:scale(1.06);}
+.srv > :not(.srv-video){position:relative;z-index:2;}
+.srv-num{position:absolute;top:12px;right:20px;font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:300;color:rgba(74,159,212,.07);line-height:1;transition:color .4s;}
+.srv:hover .srv-num{color:rgba(74,159,212,.16);}
+.srv-icon{width:42px;height:42px;color:var(--gold);opacity:.95;margin-bottom:22px;filter:drop-shadow(0 0 8px rgba(74,159,212,.35));}
+.srv-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:12px;text-shadow:0 2px 12px rgba(0,0,0,.8);}
+.srv-desc{font-size:13px;color:#9fc8e5;line-height:1.85;text-shadow:0 2px 10px rgba(0,0,0,.85);}
+.srv-cta{grid-column:span 2;min-height:250px;padding:44px 46px;background:linear-gradient(135deg,rgba(74,159,212,.14),rgba(4,8,12,.96) 58%,rgba(168,216,240,.08));position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(74,159,212,.18);}
+.srv-cta::before{content:'';position:absolute;inset:24px;border:1px solid rgba(74,159,212,.18);pointer-events:none;}
+.srv-cta::after{content:'Custom';position:absolute;right:28px;top:12px;font-family:'Cormorant Garamond',serif;font-size:64px;color:rgba(74,159,212,.08);line-height:1;}
+.srv-cta-kicker{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--neon);margin-bottom:14px;position:relative;z-index:1;}
+.srv-cta h3{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;line-height:1.05;margin-bottom:16px;position:relative;z-index:1;}
+.srv-cta p{font-size:14px;color:#9fc8e5;line-height:1.9;max-width:640px;margin-bottom:24px;position:relative;z-index:1;}
+.srv-cta-row{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1;}
+.srv-chip{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--white);border:1px solid rgba(74,159,212,.24);padding:8px 12px;background:rgba(4,8,12,.45);}
+.srv-cta .btn-g{align-self:flex-start;margin-top:26px;position:relative;z-index:1;padding:13px 28px;}
+
+/* ── PORTFOLIO ── */
+#portfolio-wrap{background:var(--dark);}
+.port-header{text-align:center;padding:0 56px;margin-bottom:72px;}
+.port-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr;grid-template-rows:320px 320px;gap:4px;max-width:1600px;margin:0 auto;}
+.port-item{position:relative;overflow:hidden;cursor:pointer;background:var(--black);}
+.port-item:first-child{grid-row:span 2;}
+.port-bg{position:absolute;inset:0;transition:transform .7s ease;z-index:0;}
+.port-bg video{width:100%;height:100%;object-fit:cover;display:block;opacity:.68;filter:saturate(.88) contrast(1.12) brightness(.72);}
+.port-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,12,.2),rgba(4,8,12,.48) 52%,rgba(4,8,12,.86));z-index:1;pointer-events:none;}
+.port-item:hover .port-bg{transform:scale(1.06);}
+.port-item:nth-child(1) .port-bg{background:linear-gradient(135deg,#1a0e06 0%,#2e1a0a 50%,#1a0e06 100%);}
+.port-item:nth-child(2) .port-bg{background:linear-gradient(135deg,#080f1a 0%,#0d1e30 100%);}
+.port-item:nth-child(3) .port-bg{background:linear-gradient(135deg,#0a100a 0%,#0d2010 100%);}
+.port-item:nth-child(4) .port-bg{background:linear-gradient(135deg,#15100a 0%,#221807 100%);}
+.port-item:nth-child(5) .port-bg{background:linear-gradient(135deg,#0a1215 0%,#0d1e20 100%);}
+.port-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,8,8,.85) 100%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:28px;z-index:3;}
+.port-item:hover .port-overlay{opacity:1;}
+.port-label{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;}
+.port-loc{font-size:9px;letter-spacing:3px;color:var(--neon);text-transform:uppercase;margin-top:4px;}
+.port-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:3px;color:rgba(232,244,252,.72);font-style:italic;text-align:center;padding:20px;text-shadow:0 2px 16px rgba(0,0,0,.9);z-index:2;}
+
+/* ── FILMS ── */
+#films-wrap{background:var(--black);}
+.films-hdr{max-width:580px;margin-bottom:72px;}
+.films-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1400px;margin:0 auto;}
+.film-card{background:var(--card);overflow:hidden;transition:transform .4s;}
+.film-card:hover{transform:translateY(-6px);}
+.film-thumb{padding-top:56.25%;position:relative;overflow:hidden;}
+.film-vis{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .6s;overflow:hidden;}
+.film-vis video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:.72;filter:saturate(.9) contrast(1.12) brightness(.72);z-index:0;}
+.film-vis::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,12,.18),rgba(4,8,12,.72));z-index:1;pointer-events:none;}
+.film-card:hover .film-vis{transform:scale(1.05);}
+.film-card:nth-child(1) .film-vis{background:linear-gradient(135deg,#150a04,#2a1408);}
+.film-card:nth-child(2) .film-vis{background:linear-gradient(135deg,#040a18,#081428);}
+.film-card:nth-child(3) .film-vis{background:linear-gradient(135deg,#04100a,#081e10);}
+.play-btn{width:52px;height:52px;border:1px solid rgba(74,159,212,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--neon);transition:all .3s;box-shadow:0 0 14px rgba(74,159,212,.2);position:relative;z-index:2;background:rgba(4,8,12,.34);backdrop-filter:blur(4px);}
+.film-card:hover .play-btn{background:var(--neon);color:var(--black);transform:scale(1.1);box-shadow:0 0 24px rgba(74,159,212,.6);}
+.play-btn svg{width:18px;height:18px;margin-left:4px;}
+.film-info{padding:26px 22px;}
+.film-meta{font-size:9px;letter-spacing:3px;color:var(--neon);text-transform:uppercase;}
+.film-couple{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin:8px 0 10px;}
+.film-desc{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* ── TESTIMONIALS ── */
+#testi-wrap{background:var(--dark);position:relative;overflow:hidden;}
+#testi-wrap::before{content:'"';position:absolute;top:-80px;left:-10px;font-family:'Cormorant Garamond',serif;font-size:500px;color:rgba(201,160,66,.03);line-height:1;pointer-events:none;z-index:0;}
+.testi-hdr{text-align:center;margin-bottom:72px;position:relative;z-index:1;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1300px;margin:0 auto;position:relative;z-index:1;}
+.testi-card{background:rgba(74,159,212,.03);border:1px solid rgba(74,159,212,.1);padding:44px 32px;position:relative;transition:border-color .3s;}
+.testi-card:hover{border-color:rgba(74,159,212,.4);box-shadow:0 0 20px rgba(74,159,212,.1);}
+.testi-q{position:absolute;top:20px;right:20px;font-family:'Cormorant Garamond',serif;font-size:72px;color:rgba(74,159,212,.08);line-height:1;}
+.testi-stars{display:flex;gap:4px;color:var(--neon);margin-bottom:18px;font-size:13px;text-shadow:0 0 8px rgba(74,159,212,.5);}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--white);line-height:1.75;margin-bottom:28px;}
+.testi-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:var(--neon);}
+.testi-event{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:1px;}
+
+/* ── PRICING ── */
+#pricing-wrap{background:var(--black);}
+.pricing-hdr{text-align:center;margin-bottom:72px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(74,159,212,.08);max-width:1200px;margin:0 auto;}
+.pkg{background:var(--black);padding:52px 36px;position:relative;transition:background .3s;}
+.pkg.hot{background:var(--card);}
+.pkg.hot::before{content:'MOST POPULAR';position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--neon);color:var(--black);font-size:8px;letter-spacing:3px;padding:6px 18px;font-weight:500;box-shadow:0 0 16px rgba(74,159,212,.5);}
+.pkg-tier{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--neon);margin-bottom:14px;}
+.pkg-name{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--white);margin-bottom:22px;}
+.pkg-price{margin-bottom:28px;}
+.pkg-price .sym{font-size:18px;color:var(--neon);vertical-align:top;margin-top:8px;display:inline-block;}
+.pkg-price .amt{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;line-height:1;color:var(--white);}
+.pkg-price .unit{font-size:11px;color:var(--muted);letter-spacing:2px;display:block;margin-top:4px;}
+.pkg-div{width:36px;height:1px;background:rgba(201,160,66,.3);margin:24px 0;}
+.pkg-list{list-style:none;margin-bottom:36px;}
+.pkg-list li{font-size:13px;color:var(--white);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-start;gap:10px;line-height:1.4;}
+.pkg-list li::before{content:'✦';color:var(--neon);font-size:8px;flex-shrink:0;margin-top:3px;}
+.pkg-cta{display:block;text-align:center;font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;padding:14px;text-decoration:none;border:1px solid var(--neon);color:var(--neon);transition:all .3s;}
+.pkg.hot .pkg-cta{background:var(--neon);color:var(--black);box-shadow:0 0 20px rgba(74,159,212,.4);}
+.pkg-cta:hover{background:var(--neon);color:var(--black);box-shadow:0 0 20px rgba(74,159,212,.4);}
+
+/* ── CONTACT ── */
+#contact-wrap{background:var(--dark);}
+#contact{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.contact-p{font-size:14px;color:var(--muted);line-height:1.95;margin-bottom:44px;}
+.c-detail{margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid rgba(74,159,212,.08);}
+.c-detail:last-of-type{border:none;}
+.c-lbl{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:var(--neon);margin-bottom:7px;}
+.c-val{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--white);text-decoration:none;transition:color .3s;display:block;}
+.c-val:hover{color:var(--gold);}
+.c-socials{display:flex;gap:14px;margin-top:36px;}
+.c-soc{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--white);text-decoration:none;padding:11px 22px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:8px;transition:all .3s;}
+.c-soc:hover{border-color:var(--neon);color:var(--neon);}
+.c-soc svg{width:13px;height:13px;fill:currentColor;}
+.form-grp{margin-bottom:20px;}
+.form-grp label{display:block;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--neon);margin-bottom:8px;}
+.form-grp input,.form-grp textarea,.form-grp select{width:100%;background:rgba(74,159,212,.03);border:1px solid rgba(74,159,212,.18);color:var(--white);padding:15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;outline:none;transition:border-color .3s;-webkit-appearance:none;border-radius:0;}
+.form-grp input:focus,.form-grp textarea:focus,.form-grp select:focus{border-color:var(--neon);box-shadow:0 0 12px rgba(74,159,212,.2);}
+.form-grp textarea{height:110px;resize:none;}
+.form-grp select option{background:var(--card);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.btn-sub{width:100%;background:var(--gold);color:var(--black);border:none;padding:17px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;cursor:pointer;transition:all .3s;}
+.btn-sub:hover{background:var(--gold3);color:var(--white);}
+
+/* ── FOOTER ── */
+footer{background:var(--black);border-top:1px solid rgba(74,159,212,.1);padding:56px 56px 36px;text-align:center;}
+.foot-logo{font-family:'Cinzel',serif;font-size:16px;letter-spacing:6px;color:var(--neon);margin-bottom:6px;text-shadow:0 0 14px rgba(74,159,212,.4);}
+.foot-tag{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--muted);margin-bottom:36px;}
+.foot-nav{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;list-style:none;}
+.foot-nav a{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;}
+.foot-nav a:hover{color:var(--neon);}
+.foot-copy{font-size:11px;color:rgba(255,255,255,.18);}
+.foot-copy a{color:var(--neon);text-decoration:none;}
+
+/* ── WHATSAPP ── */
+.wa{position:fixed;bottom:28px;right:28px;z-index:490;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.4);animation:pwa 3s infinite;}
+.wa svg{width:26px;height:26px;fill:#fff;}
+.wa-tip{position:absolute;right:66px;white-space:nowrap;background:var(--card);color:var(--white);font-size:11px;padding:8px 16px;opacity:0;transform:translateX(8px);transition:all .3s;pointer-events:none;border:1px solid rgba(74,159,212,.2);}
+.wa:hover .wa-tip{opacity:1;transform:translateX(0);}
+@keyframes pwa{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.4)}50%{box-shadow:0 4px 28px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.1)}}
+
+/* ── GLOWING TEXT ── */
+.glow{text-shadow:0 0 30px rgba(74,159,212,.4),0 0 60px rgba(74,159,212,.2),0 0 100px rgba(74,159,212,.1);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  #about{grid-template-columns:1fr;gap:48px;}
+  .srv-cta{grid-column:1 / -1;}
+  .port-grid{grid-template-columns:1fr 1fr;grid-template-rows:unset;}
+  .port-item:first-child{grid-row:unset;}
+  .port-item:first-child .port-bg,.port-item:first-child{min-height:300px;}
+  .films-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;max-width:480px;}
+  #contact{grid-template-columns:1fr;gap:48px;}
+}
+@media(max-width:768px){
+  #nav{padding:20px 24px;}#nav.s{padding:14px 24px;}
+  .nav-links,.nav-btn{display:none;}
+  .hamburger{display:flex;}
+  .sec,.sec-full{padding:80px 24px;}
+  .port-grid{grid-template-columns:1fr;}
+  .films-grid{grid-template-columns:1fr;}
+  .srv-cta{padding:38px 28px;}
+  .hero-border{inset:60px 24px;}
+  .hero-h1{font-size:clamp(40px,10vw,80px);}
+  footer{padding:48px 24px 28px;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/917273098308?text=Hello%20Wedding%20Vibes%20Studio%2C%20I%20am%20interested%20in%20your%20wedding%20photography%20services." class="wa" target="_blank" rel="noopener">
+  <span class="wa-tip">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo-img-link" style="display:flex;align-items:center;text-decoration:none;">
+    <img src="Logo/good view logo.png" alt="Wedding Vibes Studio Logo" style="height:78px;width:auto;object-fit:contain;filter:brightness(1.5) drop-shadow(0 0 10px rgba(74,159,212,0.8)) drop-shadow(0 0 20px rgba(74,159,212,0.4));" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about-wrap">About</a></li>
+    <li><a href="#services-wrap">Services</a></li>
+    <li><a href="#portfolio-wrap">Portfolio</a></li>
+    <li><a href="#films-wrap">Films</a></li>
+    <li><a href="#pricing-wrap">Packages</a></li>
+    <li><a href="#contact-wrap">Contact</a></li>
+  </ul>
+  <a href="#contact-wrap" class="nav-btn">Book Now</a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOB MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#about-wrap" onclick="closeMenu()">About</a>
+  <a href="#services-wrap" onclick="closeMenu()">Services</a>
+  <a href="#portfolio-wrap" onclick="closeMenu()">Portfolio</a>
+  <a href="#films-wrap" onclick="closeMenu()">Films</a>
+  <a href="#pricing-wrap" onclick="closeMenu()">Packages</a>
+  <a href="#contact-wrap" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="hero">
+  <div class="hero-video-bg">
+    <!-- Replace this sample MP4 URL with your final wedding video link -->
+    <video autoplay muted loop playsinline preload="auto" poster="">
+      <source src="Video\A Reel.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="cine-bar-t" id="cineT"></div>
+  <div class="cine-bar-b" id="cineB"></div>
+  <div class="hero-border"></div>
+  <div class="hero-content">
+    <div style="height:clamp(210px,34vw,350px);width:auto;object-fit:contain;margin-top:80px;">
+     <img src="Logo\good view logo.png" alt="Wedding Vibes Studio" style="height:clamp(210px,34vw,350px);width:auto;object-fit:contain;filter:brightness(1.2) drop-shadow(0 0 50px rgba(74,159,212,0.7)) drop-shadow(0 0 25px rgba(74,159,212,0.35));transform:translateY(100px);" />
+  
+    </div>
+    <div class="hero-tag">Wedding Photography &amp; Cinematic Films</div>
+    <h1 class="hero-h1 glow">
+      Your Love Story<br>Deserves a<br><em id="typingEl">Cinematic Touch</em>
+    </h1>
+    <p class="hero-sub">Real Emotions, Timeless Memories 📸</p>
+    <div class="hero-btns">
+      <a href="#portfolio-wrap" class="btn-g">View Our Work</a>
+      <a href="#contact-wrap" class="btn-o">📅 Book Your Date</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-wire"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ MARQUEE ══════════════════ -->
+<div class="marquee-wrap">
+  <div class="marquee-inner" id="mq">
+    <span class="marquee-item">Wedding Photography <span>✦</span></span>
+    <span class="marquee-item">Cinematic Films <span>✦</span></span>
+    <span class="marquee-item">Pre-Wedding Shoots <span>✦</span></span>
+    <span class="marquee-item">Drone Coverage <span>✦</span></span>
+    <span class="marquee-item">Candid Photography <span>✦</span></span>
+    <span class="marquee-item">Video Editing <span>✦</span></span>
+    <span class="marquee-item">Album Designing <span>✦</span></span>
+    <span class="marquee-item">Patna, Bihar <span>✦</span></span>
+    <span class="marquee-item">Wedding Photography <span>✦</span></span>
+    <span class="marquee-item">Cinematic Films <span>✦</span></span>
+    <span class="marquee-item">Pre-Wedding Shoots <span>✦</span></span>
+    <span class="marquee-item">Drone Coverage <span>✦</span></span>
+    <span class="marquee-item">Candid Photography <span>✦</span></span>
+    <span class="marquee-item">Video Editing <span>✦</span></span>
+    <span class="marquee-item">Album Designing <span>✦</span></span>
+    <span class="marquee-item">Patna, Bihar <span>✦</span></span>
+  </div>
+</div>
+
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<div id="about-wrap">
+<div class="sec" id="about">
+  <div class="about-frame reveal-l">
+    <div class="about-img">
+      <div class="about-img-inner">
+        <img src="Image\DSC_1599.jpg" alt="Wedding Vibes Studio photographer at work">
+      </div>
+    </div>
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+    <div class="years-badge">
+      <div class="n">5+</div>
+      <div class="l">Years</div>
+    </div>
+  </div>
+  <div class="reveal-r">
+    <div class="sec-lbl">About Us</div>
+    <h2 class="sec-h">We Don't Just <em>Capture</em><br>We Craft Feelings</h2>
+    <div class="divider"></div>
+    <p class="about-body">"Emotions meet creativity — every wedding becomes a timeless story."</p>
+    <p class="about-p">Welcome to <strong style="color:var(--neon);font-weight:400;text-shadow:0 0 10px rgba(74,159,212,.4);">Wedding Vibes Studio</strong> — where emotions meet creativity and every wedding becomes a timeless story. We are passionate wedding photographers &amp; filmmakers dedicated to capturing the most beautiful moments of your special day with elegance, emotion, and cinematic style.</p>
+    <p class="about-p">Based in Patna, Bihar, we specialize in Wedding Photography, Cinematic Wedding Films, Pre-Wedding Shoots, Candid Photography, and Traditional Coverage. Our goal is not just to take photos or videos, but to preserve the love, happiness, and memories that make your wedding unforgettable.</p>
+    <p class="about-p">With creative vision, professional equipment, and a passionate team, we turn your wedding moments into cinematic masterpieces. ❤️🎬</p>
+    <a href="#contact-wrap" class="btn-g" style="margin-top:8px;">Start Your Story →</a>
+    <div class="about-stats">
+      <div>
+        <div class="stat-n" data-target="500">0</div>
+        <div class="stat-l">Weddings Covered</div>
+      </div>
+      <div>
+        <div class="stat-n" data-target="300">0</div>
+        <div class="stat-l">Cinematic Films</div>
+      </div>
+      <div>
+        <div class="stat-n" data-target="1000">0</div>
+        <div class="stat-l">Happy Couples</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<div id="services-wrap">
+<div class="sec">
+  <div class="services-header reveal">
+    <div class="sec-lbl" style="justify-content:center">Hamaari Sevaayein</div>
+    <h2 class="sec-h">Our <em>Services</em></h2>
+    <div class="divider c"></div>
+  </div>
+  <div class="services-grid">
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/31010678/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">01</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><rect x="4" y="9" width="36" height="26" rx="3" stroke="currentColor" stroke-width="1.4"/><circle cx="22" cy="22" r="7" stroke="currentColor" stroke-width="1.4"/><circle cx="22" cy="22" r="3.5" fill="currentColor" opacity=".3"/><rect x="28" y="13" width="7" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+      <h3 class="srv-name">Wedding Photography</h3>
+      <p class="srv-desc">Beautifully capturing every emotion, ritual, and unforgettable moment of your special day with creative and elegant photography.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/29779628/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">02</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><rect x="4" y="11" width="28" height="22" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M32 17l8-5v20l-8-5V17z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      <h3 class="srv-name">Cinematic Wedding Films</h3>
+      <p class="srv-desc">Luxury cinematic wedding videos crafted with emotional storytelling, cinematic shots, and professional editing.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/29779626/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">03</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="1.4"/><path d="M22 10v12l7 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8 8l4 4M36 8l-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <h3 class="srv-name">Pre-Wedding Shoots</h3>
+      <p class="srv-desc">Creative and romantic pre-wedding shoots at stunning locations with unique concepts and cinematic vibes.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/28830717/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">04</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><path d="M10 34l8-12 5 7 5-7 8 12H10z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="32" cy="14" r="4" stroke="currentColor" stroke-width="1.4"/><rect x="4" y="8" width="36" height="28" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
+      <h3 class="srv-name">Candid Photography</h3>
+      <p class="srv-desc">Natural smiles, real emotions, and genuine moments captured perfectly without forced poses.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/29779720/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">05</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="12" stroke="currentColor" stroke-width="1.4"/><path d="M22 6v4M22 34v4M6 22h4M34 22h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="22" cy="22" r="5" fill="currentColor" opacity=".3"/></svg>
+      <h3 class="srv-name">Cinematic Photography &amp; Videography</h3>
+      <p class="srv-desc">Complete traditional coverage of all wedding functions, rituals, and family moments with cinematic flair.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/31010685/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">06</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><path d="M22 4l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6l2-6z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M12 30l-6 8M32 30l6 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M8 40h28" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <h3 class="srv-name">Drone Shoots</h3>
+      <p class="srv-desc">Grand aerial shots and cinematic drone coverage to give your wedding film a premium, breathtaking experience.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/34400964/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">07</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="18" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M8 40c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <h3 class="srv-name">Bridal &amp; Groom Portraits</h3>
+      <p class="srv-desc">Stylish and elegant portrait photography with cinematic lighting, creative poses, and premium editing.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/34448987/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">08</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><rect x="6" y="10" width="32" height="24" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M14 20h16M14 24h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="30" cy="30" r="6" stroke="currentColor" stroke-width="1.2" fill="var(--black)"/><path d="M28 30l2 2 3-3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+      <h3 class="srv-name">Reel &amp; Short Video Editing</h3>
+      <p class="srv-desc">Trending Instagram reels, teaser videos, and short cinematic edits for social media with viral-worthy cuts.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/34503193/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">09</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><rect x="6" y="8" width="32" height="28" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="10" y="12" width="10" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M24 14h10M24 18h8M24 22h10" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M10 28h24" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M10 32h16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+      <h3 class="srv-name">Wedding Album Design</h3>
+      <p class="srv-desc">Premium-quality wedding albums designed beautifully to preserve your memories forever — a treasure for life.</p>
+    </div>
+
+    <div class="srv reveal">
+      <div class="srv-video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://videos.pexels.com/video-files/33499308/14249219_1920_1080_100fps.mp4" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="srv-num">10</div>
+      <svg class="srv-icon" viewBox="0 0 44 44" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="24" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="4" y="24" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="24" y="24" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/></svg>
+      <h3 class="srv-name">Event Coverage</h3>
+      <p class="srv-desc">Pre-wedding rituals, henna ceremonies, engagements, receptions, birthdays, anniversaries, and all special events covered with passion.</p>
+    </div>
+
+    <div class="srv-cta reveal">
+      <div class="srv-cta-kicker">Tailored Experience</div>
+      <h3>Need a Custom Wedding Package?</h3>
+      <p>Tell us your date, venue, guest size, and the mood you want. We will design a complete photography, film, drone, reel, and album plan that fits your celebration perfectly.</p>
+      <div class="srv-cta-row">
+        <span class="srv-chip">Photo</span>
+        <span class="srv-chip">Film</span>
+        <span class="srv-chip">Drone</span>
+        <span class="srv-chip">Reels</span>
+        <span class="srv-chip">Album</span>
+      </div>
+      <a href="#contact-wrap" class="btn-g">Plan My Package</a>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ PORTFOLIO ══════════════════ -->
+<div id="portfolio-wrap">
+<div class="sec-full">
+  <div class="port-header reveal">
+    <div class="sec-lbl" style="justify-content:center">Visual Stories</div>
+    <h2 class="sec-h">Our <em>Portfolio</em></h2>
+    <div class="divider c"></div>
+    <p style="font-size:14px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.9;">Every wedding has a unique story, and we love capturing those unforgettable emotions with creativity and cinematic style.</p>
+  </div>
+  <div class="port-grid">
+    <div class="port-item reveal">
+      <div class="port-bg">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/31010678/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="port-placeholder">Ananya &amp; Arjun<br><span style="font-size:10px;letter-spacing:2px;color:var(--neon);font-style:normal">Patna · Grand Wedding</span></div>
+      <div class="port-overlay">
+        <div><div class="port-label">Ananya &amp; Arjun</div><div class="port-loc">Patna · 2024</div></div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/29779628/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="port-placeholder">Priya &amp; Rohit</div>
+      <div class="port-overlay">
+        <div><div class="port-label">Priya &amp; Rohit</div><div class="port-loc">Danapur · Pre-Wedding</div></div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/29779626/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="port-placeholder">Neha &amp; Vikram</div>
+      <div class="port-overlay">
+        <div><div class="port-label">Neha &amp; Vikram</div><div class="port-loc">Patna · Cinematic Film</div></div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/28830717/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="port-placeholder">Swati &amp; Deepak</div>
+      <div class="port-overlay">
+        <div><div class="port-label">Swati &amp; Deepak</div><div class="port-loc">Bihar · Candid</div></div>
+      </div>
+    </div>
+    <div class="port-item reveal">
+      <div class="port-bg">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="https://www.pexels.com/download/video/31010685/" type="video/mp4">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="port-placeholder">Riya &amp; Saurav</div>
+      <div class="port-overlay">
+        <div><div class="port-label">Riya &amp; Saurav</div><div class="port-loc">Patna · Drone Aerial</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ FILMS ══════════════════ -->
+<div id="films-wrap">
+<div class="sec">
+  <div class="films-hdr reveal-l">
+    <div class="sec-lbl">Cinematic Stories</div>
+    <h2 class="sec-h">Wedding <em>Films</em></h2>
+    <div class="divider"></div>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;">We don't make wedding videos. We make films you'll watch every anniversary and cry happy tears. 🎬</p>
+  </div>
+  <div class="films-grid">
+    <div class="film-card reveal">
+      <div class="film-thumb">
+        <div class="film-vis">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="https://www.pexels.com/download/video/34400964/" type="video/mp4">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          </video>
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="film-info">
+        <div class="film-meta">Patna · 2024</div>
+        <div class="film-couple">Ananya &amp; Arjun</div>
+        <p class="film-desc">A three-day celebration that began at sunrise and ended with glowing lamps floating on the Ganga — a film as grand as their love.</p>
+      </div>
+    </div>
+    <div class="film-card reveal">
+      <div class="film-thumb">
+        <div class="film-vis">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="https://www.pexels.com/download/video/34448987/" type="video/mp4">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          </video>
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="film-info">
+        <div class="film-meta">Danapur · 2024</div>
+        <div class="film-couple">Priya &amp; Rohit</div>
+        <p class="film-desc">Two childhood sweethearts, one grand family wedding — every frame drips with decades of waiting and the joy of finally.</p>
+      </div>
+    </div>
+    <div class="film-card reveal">
+      <div class="film-thumb">
+        <div class="film-vis">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="https://www.pexels.com/download/video/34503193/" type="video/mp4">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          </video>
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="film-info">
+        <div class="film-meta">Bihar · 2023</div>
+        <div class="film-couple">Shruti &amp; Aditya</div>
+        <p class="film-desc">Shot entirely on golden hour. A pre-wedding story that feels like a Bollywood scene written just for them.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ TESTIMONIALS ══════════════════ -->
+<div id="testi-wrap">
+<div class="sec">
+  <div class="testi-hdr reveal">
+    <div class="sec-lbl" style="justify-content:center">Client Love 💛</div>
+    <h2 class="sec-h">What Our <em>Couples</em> Say</h2>
+    <div class="divider c"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-q">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"We watched our wedding film three times and cried every time. Every emotion was captured so beautifully that it felt like watching our own cinema. Wedding Vibes Studio is the best in Patna!"</p>
+      <div class="testi-name">Ananya &amp; Arjun</div>
+      <div class="testi-event">Wedding · Patna, 2024</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-q">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The drone shots of our wedding procession were absolutely stunning! Our whole family was amazed. The team was professional, unobtrusive, and delivered beyond our expectations. So grateful!"</p>
+      <div class="testi-name">Priya &amp; Rohit</div>
+      <div class="testi-event">Grand Wedding · Danapur, 2024</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-q">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The pre-wedding shoot was absolutely amazing! We felt very comfortable with the team. The photos look straight out of a magazine. Thank you, Wedding Vibes Studio."</p>
+      <div class="testi-name">Sneha &amp; Vikash</div>
+      <div class="testi-event">Pre-Wedding · Bihar, 2023</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ PRICING ══════════════════ -->
+<div id="pricing-wrap">
+<div class="sec">
+  <div class="pricing-hdr reveal">
+    <div class="sec-lbl" style="justify-content:center">Package Details</div>
+    <h2 class="sec-h">Our <em>Packages</em></h2>
+    <div class="divider c"></div>
+    <p style="font-size:14px;color:var(--muted);max-width:440px;margin:0 auto;line-height:1.9;">Transparent pricing · Custom packages available · Every memory is worth a lifetime.</p>
+  </div>
+  <div class="pricing-grid reveal">
+    <div class="pkg">
+      <div class="pkg-tier">Essential</div>
+      <div class="pkg-name">Silver Package</div>
+      <div class="pkg-price">
+        <span class="sym">₹</span><span class="amt" style="font-family:'Roboto',sans-serif;">45,000</span>
+        <span class="unit">Starting Price</span>
+      </div>
+      <div class="pkg-div"></div>
+      <ul class="pkg-list">
+        <li>1-Day Wedding Coverage</li>
+        <li>2 Professional Photographers</li>
+        <li>500+ Edited Photos</li>
+        <li>Basic Highlight Video</li>
+        <li>Online Gallery + USB Drive</li>
+        <li>Booking: Photography Only</li>
+      </ul>
+      <a href="#contact-wrap" class="pkg-cta">Enquire Now</a>
+    </div>
+    <div class="pkg hot">
+      <div class="pkg-tier">Premium</div>
+      <div class="pkg-name">Gold Package</div>
+      <div class="pkg-price">
+        <span class="sym">₹</span><span class="amt" style="font-family:'Roboto',sans-serif;">85,000</span>
+        <span class="unit">Starting Price</span>
+      </div>
+      <div class="pkg-div"></div>
+      <ul class="pkg-list">
+        <li>2-Day Full Wedding Coverage</li>
+        <li>3 Photographers + 1 Videographer</li>
+        <li>1000+ Edited Photos</li>
+        <li>Cinematic Film (5-7 min)</li>
+        <li>Drone Coverage Included</li>
+        <li>Instagram Reels Package</li>
+        <li>Premium USB + Printed Album</li>
+        <li>Booking: Photo + Video + Editing</li>
+      </ul>
+      <a href="#contact-wrap" class="pkg-cta">Book Now</a>
+    </div>
+    <div class="pkg">
+      <div class="pkg-tier">Luxury</div>
+      <div class="pkg-name">Diamond Package</div>
+      <div class="pkg-price">
+        <span class="sym">₹</span><span class="amt" style="font-family:'Roboto',sans-serif;">15,0000</span>
+        <span class="unit">Starting Price</span>
+      </div>
+      <div class="pkg-div"></div>
+      <ul class="pkg-list">
+        <li>Multi-Day Full Coverage</li>
+        <li>4 Photographers + 2 Cinematographers</li>
+        <li>Unlimited Edited Photos</li>
+        <li>Feature Film (10-15 min)</li>
+        <li>Full Drone + Aerial Package</li>
+        <li>Pre-Wedding Shoot Included</li>
+        <li>Luxury Coffee Table Album</li>
+        <li>10 Framed Prints</li>
+        <li>Album Designing Included</li>
+        <li>Priority 30-Day Delivery</li>
+      </ul>
+      <a href="#contact-wrap" class="pkg-cta">Enquire Now</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<div id="contact-wrap">
+<div class="sec" id="contact">
+  <div class="reveal-l">
+    <div class="sec-lbl">Contact Us</div>
+    <h2 class="sec-h">Let's Tell Your <em>Story</em></h2>
+    <div class="divider"></div>
+    <p class="contact-p">Every great wedding film begins with a conversation. Tell us about your dream day, and we will preserve it beautifully forever.</p>
+    <div class="c-detail">
+      <div class="c-lbl">Phone / WhatsApp</div>
+      <a href="tel:+917273098308" class="c-val" style="font-family:'Roboto',sans-serif;">+91 7273098308</a>
+    </div>
+    <div class="c-detail">
+      <div class="c-lbl">Business WhatsApp</div>
+      <a href="https://wa.me/917273098308" class="c-val" style="font-family:'Roboto',sans-serif;">+91 7273098308</a>
+    </div>
+    <div class="c-detail">
+      <div class="c-lbl">Studio Address</div>
+      <div class="c-val" style="font-size:17px;">Danapur Market, Near SBI<br>Patna, Bihar</div>
+    </div>
+    <div class="c-detail">
+      <div class="c-lbl">Working Hours</div>
+      <div class="c-val" style="font-size:16px;">Monday – Sunday · 9 AM to 8 PM</div>
+    </div>
+    <div class="c-socials">
+      <a href="https://www.instagram.com/the_wedding_vibes_studio/" target="_blank" class="c-soc" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="#" class="c-soc">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+    </div>
+  </div>
+  <div class="reveal-r">
+    <form onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-grp">
+          <label>Your Name</label>
+          <input type="text" placeholder="Bride / Groom Name" required>
+        </div>
+        <div class="form-grp">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 XXXXXXXXXX" required>
+        </div>
+      </div>
+      <div class="form-grp">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-grp">
+          <label>Wedding Date</label>
+          <input type="date">
+        </div>
+        <div class="form-grp">
+          <label>Service Required</label>
+          <select>
+            <option value="">Choose a Service</option>
+            <option>Wedding Photography</option>
+            <option>Cinematic Wedding Film</option>
+            <option>Pre-Wedding Shoot</option>
+            <option>Candid Photography</option>
+            <option>Drone Shoot</option>
+            <option>Reel / Short Video Editing</option>
+            <option>Wedding Album Design</option>
+            <option>Full Package (Photo + Video + Album)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grp">
+        <label>Tell Us About Your Wedding Vision</label>
+        <textarea placeholder="Tell us about your venue, theme, or anything special you want..."></textarea>
+      </div>
+      <button type="submit" class="btn-sub" id="subBtn">Send Enquiry</button>
+    </form>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div style="display:flex;justify-content:center;margin-bottom:16px;">
+    <img src="Logo\good view logo.png" alt="Wedding Vibes Studio" style="height:110px;width:auto;object-fit:contain;transform:scale(2.5);filter:brightness(1.4) drop-shadow(0 0 16px rgba(74,159,212,0.6)) drop-shadow(0 0 30px rgba(74,159,212,0.25));" />
+  </div>
+  <div class="foot-tag">"Turning your most precious moments into timeless art" ❤️🎬</div>
+  <ul class="foot-nav">
+    <li><a href="#about-wrap">About</a></li>
+    <li><a href="#services-wrap">Services</a></li>
+    <li><a href="#portfolio-wrap">Portfolio</a></li>
+    <li><a href="#films-wrap">Films</a></li>
+    <li><a href="#pricing-wrap">Packages</a></li>
+    <li><a href="#testi-wrap">Testimonials</a></li>
+    <li><a href="#contact-wrap">Contact</a></li>
+  </ul>
+  <div style="width:48px;height:1px;background:rgba(74,159,212,.4);margin:0 auto 28px;box-shadow:0 0 8px rgba(74,159,212,.3);"></div>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">Danapur Market, Near SBI, Patna, Bihar &nbsp;·&nbsp; +91 7273098308</p>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">
+    <a href="https://www.instagram.com/the_wedding_vibes_studio/" target="_blank" style="color:var(--gold);text-decoration:none;">@the_wedding_vibes_studio</a>
+  </p>
+  <p class="foot-copy">© 2025 Wedding Vibes Studio. All rights reserved. Crafted with ❤️ in Patna, Bihar.</p>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+(function loop(){
+  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+  cur2.style.left=rx+'px';cur2.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur2.style.width='60px';cur2.style.height='60px';cur2.style.background='rgba(201,160,66,.08)';});
+  el.addEventListener('mouseleave',()=>{cur2.style.width='40px';cur2.style.height='40px';cur2.style.background='';});
+});
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('s',scrollY>60);
+});
+
+/* ── MOBILE MENU ── */
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('mobMenu').classList.add('open'));
+document.getElementById('mobClose').addEventListener('click',()=>document.getElementById('mobMenu').classList.remove('open'));
+function closeMenu(){document.getElementById('mobMenu').classList.remove('open');}
+
+/* ── CINEMATIC BARS ── */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('cineT').style.height='0';
+    document.getElementById('cineB').style.height='0';
+  },400);
+});
+
+/* ── TYPING EFFECT ── */
+const phrases=['Cinematic Touch','Timeless Story','Unforgettable Memory','Beautiful Reality'];
+let pi=0,ci=0,del=false;
+const tel=document.getElementById('typingEl');
+tel.innerHTML='';
+const tcur=document.createElement('span');tcur.className='typing-cursor';
+tel.appendChild(tcur);
+function type(){
+  const word=phrases[pi];
+  if(!del){
+    if(ci<word.length){
+      tel.insertBefore(document.createTextNode(word[ci]),tcur);
+      ci++;setTimeout(type,80);
+    }else{setTimeout(()=>{del=true;type();},2200);}
+  }else{
+    if(tel.childNodes.length>1){
+      tel.removeChild(tel.firstChild);
+      setTimeout(type,40);
+    }else{del=false;pi=(pi+1)%phrases.length;setTimeout(type,400);}
+  }
+}
+setTimeout(type,2200);
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      // stagger siblings
+      const siblings=[...e.target.parentElement.querySelectorAll('.reveal,.reveal-l,.reveal-r')];
+      siblings.forEach((s,i)=>{if(!s.classList.contains('in'))s.style.transitionDelay=(i*.1)+'s';});
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
+
+/* --- SERVICE / PORTFOLIO VIDEO PREVIEWS --- */
+const previewVideos=[...document.querySelectorAll('.srv-video video,.port-bg video,.film-vis video')];
+function playPreviewVideos(){
+  previewVideos.forEach(video=>{
+    video.muted=true;
+    video.play?.().catch(()=>{});
+  });
+}
+playPreviewVideos();
+setTimeout(playPreviewVideos,700);
+window.addEventListener('load',playPreviewVideos);
+window.addEventListener('scroll',playPreviewVideos,{passive:true});
+document.querySelectorAll('.srv,.port-item,.film-card').forEach(card=>{
+  card.addEventListener('mouseenter',()=>card.querySelector('video')?.play?.().catch(()=>{}));
+});
+
+/* ── COUNT UP STATS ── */
+const cobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const target=+e.target.dataset.target,suffix=target>=1000?'+':'+';
+      let current=0;const step=target/60;
+      const t=setInterval(()=>{
+        current=Math.min(current+step,target);
+        e.target.textContent=Math.floor(current)+suffix;
+        if(current>=target)clearInterval(t);
+      },25);
+      cobs.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-n[data-target]').forEach(el=>cobs.observe(el));
+
+/* ── FORM SUBMIT ── */
+function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('subBtn');
+  btn.textContent='Enquiry sent! We will contact you soon.';
+  btn.style.background='var(--gold3)';btn.style.color='var(--white)';
+  btn.disabled=true;
+  const name=e.target.querySelector('input[type=text]').value||'there';
+  const phone=e.target.querySelector('input[type=tel]').value||'';
+  setTimeout(()=>{
+    window.open(`https://wa.me/917273098308?text=${encodeURIComponent('Hello! My name is '+name+'. I am interested in your wedding photography services. Phone: '+phone)}`, '_blank');
+  },800);
+}
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
